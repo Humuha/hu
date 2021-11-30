@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+int menu()         //设置菜单。 
+{
+	printf("     ********************     \n");
+	printf("     ~~~~~~~~~~~~~~~~~~~~     \n");
+	printf("          #猜数字游戏#        \n");
+	printf("          1.Begin game        \n");
+	printf("          0.Exit  game        \n");
+	printf("     ~~~~~~~~~~~~~~~~~~~~     \n");
+	printf("     ********************     \n");
+}
+
+int game()        //开始游戏 
+{
+	int ret=rand()%100+1;        //随机生成一个0~100的随机数。
+	int guess,i,a;
+	printf("You have five times.\n"); 
+	do
+	{	  for(i=0;i<5;i++)
+		    {
+		    printf("Please enter a number that it is 1 to 100:");
+		    scanf("%5d",&guess);
+		    if(guess>ret)   
+		     printf("Too large!\n");        //数字大了。  
+		    else if(guess<ret)   
+		   printf("So small!\n");         //数字小了。
+			else
+			{	printf("Bingo! You are right!\n");   //猜对了。 
+				i=5;}
+		  } 
+	printf("The answer is %d\n",ret);
+	printf("Are you want to try again?\n");
+		 printf("1.Play again.\n");
+			 printf("0.Exit game.\n");
+		 scanf("%d",&a);
+	}
+while(a);
+}
+
+int main()
+{
+	int input;
+	srand((unsigned int)time(NULL));
+ 
+		menu();
+		printf("Please choose 1/0.\n");
+		scanf("%d",&input);
+		switch(input)
+		{
+			case 0:printf("Exit game.");        //0退出游戏 .
+			       break;
+			case 1:game();        //1进入游戏。 
+			       break;
+			default:printf("Error!\n");        //其它数字为错。 
+		}
+}
